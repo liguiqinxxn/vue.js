@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ZH-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>练习vue.js</title>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app" v-runoob:hello.a.b="message">
+</div>
+<script>
+	Vue.directive('runoob',{
+		bind: function (el,binding,vnode) {
+			var s=JSON.stringify
+			el.innerHTML=
+			'name:'     +s(binding.name)+'<br>'+
+			'value'     +s(binding.value)+'<br>'+
+			'expression:'+s(binding.expression)+'<br>'+
+			'argument:'  +s(binding.arg)+'<br>'+
+			'modifiers:'  +s(binding.modifiers)+'<br>'+
+			'vnode keys:' +Object.keys(vnode).join('，')
+		}
+	})
+	new Vue({
+		el:'#app',
+		data: {
+			message:'菜鸟教程！'
+		}
+	})
+</script>
+</body>
+</html>
